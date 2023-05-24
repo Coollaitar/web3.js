@@ -640,5 +640,44 @@ Released with 1.0.0-beta.37 code base.
 ### Security
 -  `npm audit fix` for libraries update (#5726)
 
-## [Unreleased]
+## [1.9.0]
 
+### Fixed
+
+  - Fixed skipped ws-ganache tests (#5759)
+  - Fixed "provider started to reconnect error" in web3-provider-ws (#5820)
+  - Fixed Error: Number can only safely store up to 53 bits (#5845)
+  - Fixed types for packages which have default exports but not declared default export in .d.ts (#5866)
+  - Fixed Transaction type by adding missing properties (#5856)
+
+### Changed
+
+  - Add optional `hexFormat` param to `getTransaction` and `getBlock` that accepts the value `'hex'` (#5845)
+  - `utils.toNumber` and `utils.hexToNumber` can now return the large unsafe numbers as `BigInt`, if `true` was passed to a new optional parameter called `bigIntOnOverflow` (#5845)
+  - Updated @types/bn.js dependency to 5.1.1 in web3, web3-core and web3-eth-contract as reason mentioned in #5640 (#5885)
+  - Add description to error for failed connection on websocket (#5884)
+
+  
+### Security
+  - Updated dependencies (#5885)
+
+## [1.10.0]
+
+### Fixed
+
+  - Improved the error propagation in `web3-providers-http` package to effectively propagate useful error infomation about failed HTTP connections (#5955)
+  - Fixed "Uncaught TypeError" calling a contract function that revert using MetaMask (#4454) and related "n.data.substring is not a function", that is raised when there is a revert and `web.eth.handleRevert = true` (#6000)
+
+### Changed
+
+  - `transaction.type` is now formatted to a hex string before being send to provider (#5979)
+  - When sending a transaction, if `transaction.type === '0x1' && transaction.accessList === undefined`, then `transaction.accessList` is set to `[]` (#5979)
+  - Removed an unnecessary `chainId` parameter from `toChecksumAddress()` function types (#5888)
+### Added
+-   Added support for `getPastEvents` method to filter `allEvents` and specific event (#6015)
+
+### Security
+  - Updated dependencies (#6044)
+
+
+## [Unreleased]
